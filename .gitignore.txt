@@ -1,0 +1,12 @@
+# VS / .NET build artifacts
+   bin/
+   obj/
+   .vs/
+   TestResults/
+   *.user
+   *.suo
+   *.userprefs
+
+   # Otros temporales
+   *.log
+   *.tmp
