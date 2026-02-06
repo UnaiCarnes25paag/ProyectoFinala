@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\DAM\\Proyecto\\Casino\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|d:\\dam\\proyecto\\casino\\data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedHeight": 243,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\DAM\\Proyecto\\Casino\\Data\\AuthService.cs",
+              "RelativeDocumentMoniker": "Data\\AuthService.cs",
+              "ToolTip": "D:\\DAM\\Proyecto\\Casino\\Data\\AuthService.cs",
+              "RelativeToolTip": "Data\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T11:44:54.619Z",
+              "EditorCaption": ""
             }
           ]
         }
