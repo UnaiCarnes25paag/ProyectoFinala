@@ -42,12 +42,12 @@ namespace Casino.Data
             userName = userName.Trim();
 
             if (string.IsNullOrWhiteSpace(tableName))
-                return (false, "El nombre de la mesa no puede estar vacio.", null);
+                return (false, "Mahaiaren izena ezin da hutsik egon.", null);
 
             lock (_lock)
             {
                 if (_tables.ContainsKey(tableName))
-                    return (false, "Ya existe una mesa con ese nombre.", null);
+                    return (false, "Izen hori duen mahai bat dago jada.", null);
 
                 var table = new TableInfo(tableName);
                 table.AddPlayer(userName);
@@ -67,10 +67,10 @@ namespace Casino.Data
             lock (_lock)
             {
                 if (!_tables.TryGetValue(tableName, out var table))
-                    return (false, "No existe una mesa con ese nombre.", null);
+                    return (false, "Ez dago izen hori duen mahairik.", null);
 
                 if (!table.AddPlayer(userName))
-                    return (false, "Ya estas en esta mesa.", table);
+                    return (false, "Dagoeneko mahai honetan zaude.", table);
 
                 return (true, null, table);
             }

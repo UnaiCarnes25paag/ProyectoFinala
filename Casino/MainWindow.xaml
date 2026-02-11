@@ -26,14 +26,14 @@
         <DockPanel Grid.Row="0" Margin="8" LastChildFill="False">
             <!-- Info jugador -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center">
-                <TextBlock Text="Jugador:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                <TextBlock Text="Jokalaria:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding LocalPlayerName}" Foreground="{StaticResource TextPrimary}" Margin="6,0,0,0" VerticalAlignment="Center"/>
 
                 <!-- NUEVO: fichas del jugador local siempre visibles -->
-                <TextBlock Text=" | Fichas:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text=" | Fichak:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding LocalChips}" Foreground="{StaticResource TextPrimary}" Margin="4,0,0,0" VerticalAlignment="Center"/>
 
-                <TextBlock Text=" | Mesa actual:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text=" | Uneko mahaia:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding CurrentTableName}"
                            Foreground="{StaticResource TextPrimary}"
                            Margin="4,0,0,0"
@@ -41,7 +41,7 @@
                            Visibility="{Binding IsInTable, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                 <!-- (ninguna) visible solo si NO estas en mesa -->
-                <TextBlock Text="(ninguna)"
+                <TextBlock Text="(bat ere ez)"
                            Foreground="{StaticResource TextSecondary}"
                            Margin="4,0,0,0"
                            VerticalAlignment="Center">
@@ -60,18 +60,18 @@
 
             <!-- Crear / Unirse a mesa -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
-                <TextBlock Text="Mesa:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                <TextBlock Text="Mahai izena:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
                 <TextBox Width="180"
                          Margin="8,0,0,0"
                          Text="{Binding TableName, UpdateSourceTrigger=PropertyChanged}"
-                         ToolTip="Nombre de la mesa" />
-                <Button Content="Crear mesa"
+                         ToolTip="Mahaiaren izena" />
+                <Button Content="Mahai berria"
                         Margin="8,0,0,0"
                         Command="{Binding CreateTableCommand}" />
-                <Button Content="Unirse"
+                <Button Content="Sartu"
                         Margin="4,0,0,0"
                         Command="{Binding JoinTableCommand}" />
-                <Button Content="Salir de mesa"
+                <Button Content="Mahaitik atera"
                         Margin="8,0,0,0"
                         Command="{Binding LeaveTableCommand}" />
 
@@ -119,7 +119,7 @@
                                 <Border Margin="6" Background="#162A24" Padding="8" CornerRadius="4">
                                     <StackPanel>
                                         <TextBlock Text="{Binding DisplayName}" Foreground="{StaticResource TextPrimary}" />
-                                        <TextBlock Text="{Binding Chips, StringFormat=Chips: {0}}" Foreground="{StaticResource TextSecondary}" />
+                                        <TextBlock Text="{Binding Chips, StringFormat=Fichak: {0}}" Foreground="{StaticResource TextSecondary}" />
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
@@ -133,7 +133,7 @@
                                 VerticalAlignment="Center">
 
                         <!-- Pot -->
-                        <TextBlock Text="{Binding Pot, StringFormat=Pot: {0}}"
+                        <TextBlock Text="{Binding Pot, StringFormat=Potea: {0}}"
                                    Foreground="{StaticResource TextPrimary}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
 
                         <!-- Community cards -->
@@ -165,7 +165,7 @@
                         <TextBlock Text="{Binding PhaseText}" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,8,0,0"/>
 
                         <!-- Local player's hole cards -->
-                        <TextBlock Text="Tus cartas:" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,12,0,4"/>
+                        <TextBlock Text="Zure kartak:" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Center" Margin="0,12,0,4"/>
 
                         <ItemsControl ItemsSource="{Binding LocalSeat.HoleCards}">
                             <ItemsControl.ItemsPanel>
@@ -196,7 +196,7 @@
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="{Binding SmallBlind, StringFormat=SB: {0}}" Foreground="{StaticResource TextSecondary}" Margin="0,0,16,0"/>
                         <TextBlock Text="{Binding BigBlind, StringFormat=BB: {0}}" Foreground="{StaticResource TextSecondary}" Margin="0,0,16,0"/>
-                        <TextBlock Text="{Binding HandNumber, StringFormat=Hand #{0}}" Foreground="{StaticResource TextSecondary}"/>
+                        <TextBlock Text="{Binding HandNumber, StringFormat=Esku #{0}}" Foreground="{StaticResource TextSecondary}"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -206,7 +206,7 @@
         <Border Grid.Row="1" Margin="12"
                 Visibility="{Binding IsWaitingForReady, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="{Binding CurrentTableName, StringFormat=Mesa: {0}}"
+                <TextBlock Text="{Binding CurrentTableName, StringFormat=Mahai: {0}}"
                            Foreground="{StaticResource TextPrimary}"
                            FontSize="18"
                            FontWeight="Bold"
@@ -218,20 +218,20 @@
                            Margin="0,8,0,0"
                            HorizontalAlignment="Center">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0}/{1} jugadores listos">
+                        <MultiBinding StringFormat="{}{0}/{1} jokalari prest">
                             <Binding Path="ReadyPlayers"/>
                             <Binding Path="TotalPlayers"/>
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
 
-                <Button Content="Ready"
+                <Button Content="Prest"
                         Command="{Binding ToggleReadyCommand}"
                         MinWidth="120"
                         Margin="0,16,0,0"
                         HorizontalAlignment="Center"/>
 
-                <TextBlock Text="Esperando a que todos los jugadores marquen Ready..."
+                <TextBlock Text="Jokalari guztiak prest egon arte itxaroten..."
                            Foreground="{StaticResource TextSecondary}"
                            Margin="0,12,0,0"
                            HorizontalAlignment="Center"
@@ -252,7 +252,7 @@
                 </Style>
             </Border.Style>
 
-            <TextBlock Text="No estas en ninguna mesa. Crea una mesa o unete a una existente usando el panel superior."
+            <TextBlock Text="Ez zaude inolako mahaitan. Goiko panelean mahai berria sor dezakezu edo existitzen den batera sartu."
                Foreground="{StaticResource TextPrimary}"
                FontSize="16"
                HorizontalAlignment="Center"
@@ -272,14 +272,14 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="Your Turn:" Foreground="{StaticResource TextSecondary}"/>
+                    <TextBlock Text="Zure txanda:" Foreground="{StaticResource TextSecondary}"/>
                     <Ellipse Width="14" Height="14" Fill="{StaticResource Accent}"
                              Visibility="{Binding IsLocalTurn, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="8,0,0,0"/>
                     <TextBlock Text="{Binding TurnCountdown, StringFormat={}{0}s}"
                                Foreground="{StaticResource TextSecondary}" Margin="8,0,0,0"/>
 
                     <!-- NUEVO: fichas del jugador local -->
-                    <TextBlock Text=" | Tus fichas:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0"/>
+                    <TextBlock Text=" | Zure fichak:" Foreground="{StaticResource TextSecondary}" Margin="12,0,0,0"/>
                     <TextBlock Text="{Binding LocalChips}"
                                Foreground="{StaticResource TextPrimary}"
                                FontWeight="Bold"
@@ -293,10 +293,10 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="Amount:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                    <TextBlock Text="Kopurua:" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
                     <Slider Width="240" Minimum="{Binding MinBet}" Maximum="{Binding MaxBet}" Value="{Binding BetAmount, Mode=TwoWay}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="8,0,0,0"/>
                     <TextBox Width="80" Text="{Binding BetAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="8,0,0,0"/>
-                    <Button Content="Set Max" Command="{Binding SetMaxBetCommand}" Margin="8,0,0,0"/>
+                    <Button Content="Gehienez" Command="{Binding SetMaxBetCommand}" Margin="8,0,0,0"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -321,7 +321,7 @@
                     </Style>
                 </Grid.Style>
 
-                <GroupBox Header="Chat" Margin="8">
+                <GroupBox Header="Txata" Margin="8">
                     <Border Padding="8">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl ItemsSource="{Binding ChatMessages}">
@@ -354,7 +354,7 @@
 
                 <TextBox DockPanel.Dock="Left"
                          Text="{Binding ChatInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Send"
+                <Button Content="Bidali"
                         Command="{Binding SendChatCommand}"
                         Width="120"
                         Margin="8,0,0,0"/>
@@ -373,7 +373,7 @@
                     </Style>
                 </Grid.Style>
 
-                <GroupBox Header="Historial de manos" Margin="8">
+                <GroupBox Header="Esku-historiala" Margin="8">
                     <Border Padding="8">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <DataGrid ItemsSource="{Binding HandHistory}"
@@ -388,16 +388,16 @@
                                       Background="Transparent"
                                       Foreground="Black">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Fecha"
+                                    <DataGridTextColumn Header="Data"
                                                         Binding="{Binding CreatedAt, StringFormat={}{0:dd/MM HH:mm}}"
                                                         Width="120"/>
-                                    <DataGridTextColumn Header="Mesa"
+                                    <DataGridTextColumn Header="Mahai"
                                                         Binding="{Binding TableName}"
                                                         Width="*"/>
-                                    <DataGridTextColumn Header="Hole"
+                                    <DataGridTextColumn Header="Eskua"
                                                         Binding="{Binding HoleCards}"
                                                         Width="100"/>
-                                    <DataGridTextColumn Header="Board"
+                                    <DataGridTextColumn Header="Boarda"
                                                         Binding="{Binding BoardCards}"
                                                         Width="150"/>
                                     <DataGridTextColumn Header="Net"
@@ -425,7 +425,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Estadísticas generales"
+                <TextBlock Text="Estatistika orokorrak"
                            FontSize="22"
                            FontWeight="Bold"
                            Foreground="{StaticResource TextPrimary}"

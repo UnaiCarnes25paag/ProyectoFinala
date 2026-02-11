@@ -62,7 +62,7 @@ namespace Casino.ViewModels
 
         // Estado de la mesa
         private int _pot;
-        private string _phaseText = "Pre-Flop";
+        private string _phaseText = "Preflopa";
         private int _smallBlind = 50;
         private int _bigBlind = 100;
         private int _handNumber = 1;
@@ -191,7 +191,7 @@ namespace Casino.ViewModels
             }
         }
 
-        public string StatsButtonText => IsShowingStats ? "Salir estadísticas" : "Estadísticas";
+        public string StatsButtonText => IsShowingStats ? "Estatistiketatik_irtetea" : "Estatistikak";
 
         // Commands
         public ICommand CreateTableCommand { get; }
@@ -215,7 +215,7 @@ namespace Casino.ViewModels
         public ObservableCollection<HandHistoryEntry> HandHistory { get; } = new();
 
         // Textos de estadísticas para mostrar en la UI
-        private string _statsSummary = "Sin datos de estadísticas.";
+        private string _statsSummary = "Ez dago estatistiken daturik.";
         public string StatsSummary
         {
             get => _statsSummary;
@@ -256,7 +256,7 @@ namespace Casino.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"No se pudo conectar al servidor: {ex.Message}";
+                StatusMessage = $"Ezin izan da zerbitzarira konektatu: {ex.Message}";
             }
 
             CreateTableCommand = new RelayCommand(
@@ -296,14 +296,14 @@ namespace Casino.ViewModels
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
             var table = TableName.Trim();
             if (string.IsNullOrWhiteSpace(table))
             {
-                StatusMessage = "El nombre de la mesa no puede estar vacio.";
+                StatusMessage = "Mahaiaren izena ezin da hutsik egon.";
                 return;
             }
 
@@ -316,7 +316,7 @@ namespace Casino.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al crear mesa: {ex.Message}";
+                StatusMessage = $"Errorea mahaia sortzean: {ex.Message}";
                 return;
             }
 
@@ -333,7 +333,7 @@ namespace Casino.ViewModels
             TotalPlayers = 0;
             ReadyPlayers = 0;
 
-            Log($"Mesa creada: {CurrentTableName}");
+            Log($"Mahai berria sortu da: {CurrentTableName}");
 
             InitDemoTable();
             await PollAsync();
@@ -345,14 +345,14 @@ namespace Casino.ViewModels
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
             var table = TableName.Trim();
             if (string.IsNullOrWhiteSpace(table))
             {
-                StatusMessage = "El nombre de la mesa no puede estar vacio.";
+                StatusMessage = "Mahaiaren izena ezin da hutsik egon.";
                 return;
             }
 
@@ -365,7 +365,7 @@ namespace Casino.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al unirse a la mesa: {ex.Message}";
+                StatusMessage = $"Errorea mahaira sartzean: {ex.Message}";
                 return;
             }
 
@@ -389,7 +389,7 @@ namespace Casino.ViewModels
             TotalPlayers = 0;
             ReadyPlayers = 0;
 
-            Log($"Te has unido a la mesa: {CurrentTableName}");
+            Log($"Mahaira sartu zara: {CurrentTableName}");
 
             InitDemoTable();
             await PollAsync();
@@ -408,7 +408,7 @@ namespace Casino.ViewModels
                 DisplayName = LocalPlayerName,
                 Chips = 5000,
                 CurrentBet = 0,
-                StatusText = IsLocalReady ? "Listo" : "No listo",
+                StatusText = IsLocalReady ? "Prest" : "Prest_ez",
                 IsDealer = true,
                 IsLocal = true,
                 IsReady = IsLocalReady,
@@ -420,7 +420,7 @@ namespace Casino.ViewModels
             LocalSeat = localSeat;
 
             Pot = 0;
-            PhaseText = IsGameStarted ? "Pre-Flop" : "";
+            PhaseText = IsGameStarted ? "Preflopa" : "";
             IsLocalTurn = false;
         }
 
@@ -443,7 +443,7 @@ namespace Casino.ViewModels
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
@@ -463,7 +463,7 @@ namespace Casino.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al enviar acción: {ex.Message}";
+                StatusMessage = $"Errorea ekintza bidaltzean: {ex.Message}";
                 return;
             }
 
@@ -492,7 +492,7 @@ namespace Casino.ViewModels
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
@@ -523,7 +523,7 @@ namespace Casino.ViewModels
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
@@ -533,11 +533,11 @@ namespace Casino.ViewModels
             if (local is not null)
             {
                 local.IsReady = true;
-                local.StatusText = "Listo";
+                local.StatusText = "Prest";
                 OnPropertyChanged(nameof(PlayerSeats));
             }
 
-            Log($"{LocalPlayerName} esta listo.");
+            Log($"{LocalPlayerName} prest dago.");
 
             await _serverClient.SendAsync("SET_READY");
             RaiseTableCommandsCanExecuteChanged();
@@ -625,13 +625,13 @@ namespace Casino.ViewModels
                         if (started && !IsGameStarted)
                         {
                             IsGameStarted = true;
-                            PhaseText = "Pre-Flop";
-                            Log($"La partida ha comenzado en {CurrentTableName} (desde servidor).");
+                            PhaseText = "Preflopa";
+                            Log($"Partida {CurrentTableName} mahaian hasi da (zerbitzariaren arabera).");
                             InitDemoTable();
                         }
                         else if (!started && IsGameStarted)
                         {
-                            Log($"La partida ha terminado en {CurrentTableName}. Esperando nuevo Ready.");
+                            Log($"Partida {CurrentTableName} mahaian amaitu da. Prest botoi berria sakatu arte itxaroten.");
 
                             IsGameStarted = false;
                             IsLocalReady = false;
@@ -801,13 +801,13 @@ namespace Casino.ViewModels
             if (IsShowingStats)
             {
                 IsShowingStats = false;
-                StatusMessage = "Has salido del modo estadísticas.";
+                StatusMessage = "Estatistiken modutik atera zara.";
                 return;
             }
 
             if (_serverClient is null || !_serverClient.IsConnected)
             {
-                StatusMessage = "Servidor no disponible.";
+                StatusMessage = "Zerbitzaria ez dago eskuragarri.";
                 return;
             }
 
@@ -820,7 +820,7 @@ namespace Casino.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al pedir historial: {ex.Message}";
+                StatusMessage = $"Errorea historial eskapatzean: {ex.Message}";
                 return;
             }
 
@@ -871,7 +871,7 @@ namespace Casino.ViewModels
             }
 
             RecomputeStatistics();
-            StatusMessage = $"Estadísticas cargadas: {HandHistory.Count} manos.";
+            StatusMessage = $"Estatistikak kargatuta: {HandHistory.Count} esku.";
             IsShowingStats = true;
         }
 
@@ -879,7 +879,7 @@ namespace Casino.ViewModels
         {
             if (HandHistory.Count == 0)
             {
-                StatsSummary = "Sin datos de estadísticas.";
+                StatsSummary = "Ez dago estatistiken daturik.";
                 WinRateText = "";
                 MostPlayedRanksText = "";
                 MostPlayedHandsText = "";
@@ -916,8 +916,8 @@ namespace Casino.ViewModels
             }
 
             var posRate = total > 0 ? (double)positive / total * 100.0 : 0.0;
-            StatsSummary = $"Total manos: {total}  |  Ganadoras (Net>0): {positive}  |  Perdedoras (Net<0): {negative}";
-            WinRateText = $"Porcentaje de manos con Net positivo: {posRate:0.0}%";
+            StatsSummary = $"Eskuak guztira: {total}  |  Irabazleak (Net>0): {positive}  |  Galtzaileak (Net<0): {negative}";
+            WinRateText = $"Net positiboa duten eskuen portzentaia: {posRate:0.0}%";
 
             if (rankCounts.Count > 0)
             {
@@ -926,11 +926,11 @@ namespace Casino.ViewModels
                     .ThenBy(kv => kv.Key)
                     .First();
                 var rankPct = (double)maxRank.Value / rankCounts.Values.Sum() * 100.0;
-                MostPlayedRanksText = $"Rango más jugado: {maxRank.Key} ({rankPct:0.0}% de las cartas propias)";
+                MostPlayedRanksText = $"Gehien jokatutako karta-maila: {maxRank.Key} (zure karta propioen {rankPct:0.0}%ean)";
             }
             else
             {
-                MostPlayedRanksText = "Sin datos de rangos más jugados.";
+                MostPlayedRanksText = "Ez dago gehien jokatutako mailen daturik.";
             }
 
             if (handCounts.Count > 0)
@@ -940,11 +940,11 @@ namespace Casino.ViewModels
                     .ThenBy(kv => kv.Key)
                     .First();
                 var handPct = (double)maxHand.Value / total * 100.0;
-                MostPlayedHandsText = $"Mano inicial más jugada: {maxHand.Key} ({handPct:0.0}% de las manos)";
+                MostPlayedHandsText = $"Hasierako esku gehien jokatuena: {maxHand.Key} (eskuen {handPct:0.0}%ean)";
             }
             else
             {
-                MostPlayedHandsText = "Sin datos de manos iniciales.";
+                MostPlayedHandsText = "Ez dago hasierako eskuen daturik.";
             }
         }
 

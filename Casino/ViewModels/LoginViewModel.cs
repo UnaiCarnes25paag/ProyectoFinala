@@ -15,8 +15,8 @@ namespace Casino.ViewModels
         private string _confirmPassword = "";
         private bool _isRegisterMode;
         private string _statusMessage = "";
-        private string _submitText = "Iniciar sesion";
-        private string _toggleText = "Crear cuenta";
+        private string _submitText = "Saioa hasi";
+        private string _toggleText = "Kontua sortu";
 
         private readonly UserRepository _repository = new();
         private readonly IAuthService _authService;
@@ -119,13 +119,13 @@ namespace Casino.ViewModels
         {
             if (IsRegisterMode)
             {
-                SubmitText = "Registrar";
-                ToggleText = "Ya tengo cuenta";
+                SubmitText = "Erregistratu";
+                ToggleText = "Dagoeneko kontua dut";
             }
             else
             {
-                SubmitText = "Iniciar sesion";
-                ToggleText = "Crear cuenta";
+                SubmitText = "Saioa hasi";
+                ToggleText = "Kontua sortu";
             }
         }
 
@@ -160,13 +160,13 @@ namespace Casino.ViewModels
         {
             if (Password != ConfirmPassword)
             {
-                StatusMessage = "Las contraseñas no coinciden.";
+                StatusMessage = "Pasahitzak ez datoz bat.";
                 return;
             }
 
             if (await _repository.UserExistsAsync(UserName).ConfigureAwait(false))
             {
-                StatusMessage = "El nombre de usuario ya está en uso.";
+                StatusMessage = "Erabiltzaile izena jada erabilita dago.";
                 return;
             }
 
@@ -174,7 +174,7 @@ namespace Casino.ViewModels
 
             Application.Current.Dispatcher.Invoke(() =>
             {
-                StatusMessage = "Registro completado. Ahora puedes iniciar sesión con tu nueva cuenta.";
+                StatusMessage = "Erregistroa osatu da. Orain kontu berriarekin saioa has dezakezu.";
                 UserName = "";
                 Password = "";
                 ConfirmPassword = "";

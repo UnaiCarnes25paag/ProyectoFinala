@@ -160,7 +160,7 @@ namespace Casino.Server
                     return await HandleHistoryAsync(session).ConfigureAwait(false);
 
                 default:
-                    return "ERR Comando_desconocido";
+                    return "ERR Komando_ezezaguna";
             }
         }
 
@@ -169,7 +169,7 @@ namespace Casino.Server
             // LOGIN user password
             var parts = args.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length != 2)
-                return "ERR Formato_LOGIN_invalido";
+                return "ERR LOGIN_formatu_okerra";
 
             var user = parts[0].Trim();
             var pass = parts[1].Trim();
@@ -178,7 +178,7 @@ namespace Casino.Server
             var existing = await _userRepository.ValidateUserAsync(user, pass).ConfigureAwait(false);
             if (existing is null)
             {
-                return "ERR Credenciales_invalidas";
+                return "ERR Kredentzial_okerrak";
             }
 
             session.UserName = user;
@@ -191,15 +191,15 @@ namespace Casino.Server
         private static async Task<string> HandleCreateTableAsync(string args, ClientSession session)
         {
             if (session.UserName is null)
-                return "ERR No_logueado";
+                return "ERR Saioa_hasi_gabe";
 
             var tableName = args.Trim();
             if (string.IsNullOrWhiteSpace(tableName))
-                return "ERR Nombre_mesa_vacio";
+                return "ERR Mahai_izena_hutsik";
 
             var (success, error) = await _tableRepository.CreateTableAsync(tableName, session.UserName).ConfigureAwait(false);
             if (!success)
-                return $"ERR {error ?? "No_se_pudo_crear_mesa"}";
+                return $"ERR {error ?? "Ezin_izan_da_mahaia_sortu"}";
 
             session.CurrentTable = tableName;
             session.LastChatMessageId = 0;
@@ -220,7 +220,7 @@ namespace Casino.Server
             var (success, error) = await _tableRepository.JoinTableAsync(tableName, session.UserName).ConfigureAwait(false);
             Console.WriteLine($"[Server] HandleJoinTableAsync: JoinTableAsync success={success}, error='{error}'");
             if (!success)
-                return $"ERR {error ?? "No_se_pudo_unir_mesa"}";
+                return $"ERR {error ?? "Ezin_izan_da_mahaira_sartu"}";
 
             session.CurrentTable = tableName;
             session.LastChatMessageId = 0;
@@ -240,8 +240,8 @@ namespace Casino.Server
             var tableName = session.CurrentTable;
 
             await _tableRepository.SetReadyAsync(tableName, session.UserName, true);
-            await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                $"{session.UserName} esta listo.");
+            await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                $"{session.UserName} prest dago.");
 
             // comprobar si todos estan listos
             var allReady = await _tableRepository.AreAllPlayersReadyAsync(tableName).ConfigureAwait(false);
@@ -253,8 +253,8 @@ namespace Casino.Server
             if (allReady)
             {
                 await _tableRepository.MarkGameStartedAsync(tableName).ConfigureAwait(false);
-                await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                    $"Todos los jugadores estan listos en {tableName}. La partida comienza.")
+                await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                    $"Jokalari guztiak prest daude {tableName} mahaian. Partida hasten da.")
                     .ConfigureAwait(false);
 
                 // Iniciar estado de poker en memoria y repartir cartas
@@ -289,8 +289,8 @@ namespace Casino.Server
                 state.PlayersInOrder.RemoveAll(p => string.Equals(p, user, StringComparison.OrdinalIgnoreCase));
             }
 
-            await _tableRepository.InsertChatMessageAsync(table, "Servidor",
-                $"{session.UserName} ha salido de la mesa.").ConfigureAwait(false);
+            await _tableRepository.InsertChatMessageAsync(table, "Zerbitzaria",
+                $"{session.UserName} mahaitik atera da.").ConfigureAwait(false);
 
             await _tableRepository.LeaveTableAsync(table, session.UserName).ConfigureAwait(false);
 
@@ -304,13 +304,13 @@ namespace Casino.Server
         {
             if (session.UserName is null)
                 return "ERR No_logueado";
-
+                
             if (string.IsNullOrWhiteSpace(session.CurrentTable))
-                return "ERR No_estoy_en_mesa";
+                return "ERR Ez_zaude_mahain_batean";
 
             var text = args.Trim();
             if (string.IsNullOrWhiteSpace(text))
-                return "ERR Mensaje_vacio";
+                return "ERR Mezua_hutsik";
 
             await _tableRepository.InsertChatMessageAsync(session.CurrentTable, session.UserName, text)
                 .ConfigureAwait(false);
@@ -324,7 +324,7 @@ namespace Casino.Server
                 return "ERR No_logueado";
 
             if (string.IsNullOrWhiteSpace(session.CurrentTable))
-                return "ERR No_estoy_en_mesa";
+                return "ERR Ez_zaude_mahain_batean";
 
             var tableName = session.CurrentTable;
 
@@ -730,12 +730,12 @@ namespace Casino.Server
                 return "ERR No_logueado";
 
             if (string.IsNullOrWhiteSpace(session.CurrentTable))
-                return "ERR No_estoy_en_mesa";
+                return "ERR Ez_zaude_mahain_batean";
 
             var tableName = session.CurrentTable;
 
             if (!_pokerTables.TryGetValue(tableName, out var state))
-                return "ERR Partida_no_inicializada";
+                return "ERR Partida_hasi_gabe";
 
             var player = session.UserName;
 
@@ -745,28 +745,28 @@ namespace Casino.Server
 
             var actionText = args.Trim();
             if (string.IsNullOrWhiteSpace(actionText))
-                return "ERR Accion_vacia";
+                return "ERR Ekintza_hutsik";
 
             var parts = actionText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var action = parts[0].ToUpperInvariant();
             int amount = 0;
 
             if (parts.Length >= 2 && !int.TryParse(parts[1], out amount))
-                return "ERR Cantidad_invalida";
+                return "ERR Kopuru_okerra";
 
             switch (action)
             {
                 case "FOLD":
                     state.IsFolded[player] = true;
-                    await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                        $"{player} se retira (fold).").ConfigureAwait(false);
+                    await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                        $"{player} foldea eta eskuatik ateratzen da.").ConfigureAwait(false);
                     break;
 
                 case "CHECK":
                     if (state.CurrentBetAmount > state.CurrentBets[player])
                         return "ERR No_puedes_hacer_check_debes_pagar";
-                    await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                        $"{player} hace check.").ConfigureAwait(false);
+                    await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                        $"{player} check egiten du.").ConfigureAwait(false);
                     break;
 
                 case "CALL":
@@ -774,14 +774,14 @@ namespace Casino.Server
                         var toPay = state.CurrentBetAmount - state.CurrentBets[player];
                         if (toPay < 0) toPay = 0;
                         if (toPay > state.PlayerChips[player])
-                            return "ERR No_tienes_fichas_suficientes";
+                            return "ERR Ez_dituzu_nahikoa_fixa";
 
                         state.PlayerChips[player] -= toPay;
                         state.CurrentBets[player] += toPay;
                         state.Pot += toPay;
 
-                        await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                            $"{player} paga {toPay}.").ConfigureAwait(false);
+                        await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                            $"{player} {toPay} ordaintzen du (call).").ConfigureAwait(false);
                     }
                     break;
 
@@ -792,7 +792,7 @@ namespace Casino.Server
 
                     var needed = amount;
                     if (needed > state.PlayerChips[player])
-                        return "ERR No_tienes_fichas_suficientes";
+                        return "ERR Ez_dituzu_nahikoa_fixa";
 
                     state.PlayerChips[player] -= needed;
                     state.CurrentBets[player] += needed;
@@ -805,12 +805,12 @@ namespace Casino.Server
                     state.LastAggressorIndex = state.PlayersInOrder.FindIndex(p =>
                         string.Equals(p, player, StringComparison.OrdinalIgnoreCase));
 
-                    await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                        $"{player} {action.ToLowerInvariant()} {needed}.").ConfigureAwait(false);
+                    await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                        $"{player} {action.ToLowerInvariant()} {needed} egiten du.").ConfigureAwait(false);
                     break;
 
                 default:
-                    return "ERR Accion_desconocida";
+                    return "ERR Ekintza_ezezaguna";
             }
 
             // ¿Queda solo un jugador activo?
@@ -820,8 +820,8 @@ namespace Casino.Server
                 if (!string.IsNullOrWhiteSpace(winner))
                 {
                     state.PlayerChips[winner] += state.Pot;
-                    await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                        $"{winner} gana el bote de {state.Pot} puntos.").ConfigureAwait(false);
+                    await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                        $"{winner}(e)k {state.Pot} puntuko potea irabazi du.").ConfigureAwait(false);
 
                     Console.WriteLine($"[Poker] Mesa '{tableName}': mano terminada, ganador {winner} (pot={state.Pot}).");
 
@@ -1232,8 +1232,8 @@ namespace Casino.Server
                     state.PlayerChips[bestPlayer] += state.Pot;
 
                     var rankText = bestHand.Rank.ToString();
-                    await _tableRepository.InsertChatMessageAsync(tableName, "Servidor",
-                        $"{bestPlayer} gana el bote de {state.Pot} puntos con {rankText}.")
+                    await _tableRepository.InsertChatMessageAsync(tableName, "Zerbitzaria",
+                        $"{bestPlayer}(e)k {state.Pot} puntuko potea irabazi du {rankText} eskuarekin.")
                         .ConfigureAwait(false);
 
                     Console.WriteLine($"[Poker] Mesa '{tableName}': showdown ganador {bestPlayer}, rank={rankText}, pot={state.Pot}");

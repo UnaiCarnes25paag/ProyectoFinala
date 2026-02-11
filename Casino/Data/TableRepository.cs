@@ -16,7 +16,7 @@ namespace Casino.Data
             if (string.IsNullOrWhiteSpace(tableName))
             {
                 Console.WriteLine("[TableRepository] CreateTableAsync: nombre vacio");
-                return (false, "El nombre de la mesa no puede estar vacio.");
+                return (false, "Mahaiaren izena ezin da hutsik egon.");
             }
 
             await using var connection = new SqliteConnection(DatabaseInitializer.ConnectionString);
@@ -35,7 +35,7 @@ namespace Casino.Data
                 if (count > 0)
                 {
                     Console.WriteLine("[TableRepository] CreateTableAsync: ya existe mesa");
-                    return (false, "Ya existe una mesa con ese nombre.");
+                    return (false, "Izen hori duen mahai bat dago jada.");
                 }
             }
 
@@ -73,13 +73,12 @@ namespace Casino.Data
         public async Task<(bool Exists, string? Error)> TableExistsAsync(string tableName)
         {
             tableName = tableName.Trim();
-
             Console.WriteLine($"[TableRepository] TableExistsAsync: table='{tableName}'");
 
             if (string.IsNullOrWhiteSpace(tableName))
             {
                 Console.WriteLine("[TableRepository] TableExistsAsync: nombre vacio");
-                return (false, "El nombre de la mesa no puede estar vacio.");
+                return (false, "Mahaiaren izena ezin da hutsik egon.");
             }
 
             await using var connection = new SqliteConnection(DatabaseInitializer.ConnectionString);
@@ -93,7 +92,7 @@ namespace Casino.Data
             var count = (long)await cmd.ExecuteScalarAsync().ConfigureAwait(false);
             Console.WriteLine($"[TableRepository] TableExistsAsync: count={count}");
 
-            return (count > 0, count > 0 ? null : "No existe una mesa con ese nombre.");
+            return (count > 0, count > 0 ? null : "Ez dago izen hori duen mahairik.");
         }
 
         public async Task<(bool Success, string? Error)> JoinTableAsync(string tableName, string userName)
@@ -125,7 +124,7 @@ namespace Casino.Data
             if (affected == 0)
             {
                 Console.WriteLine("[TableRepository] JoinTableAsync: NO se pudo insertar jugador (ya estaba o error).");
-                return (false, "No_se_pudo_unir_mesa");
+                return (false, "Ezin_izan_da_mahaira_sartu");
             }
 
             Console.WriteLine("[TableRepository] JoinTableAsync: OK");
@@ -425,7 +424,7 @@ namespace Casino.Data
             await cmd.ExecuteNonQueryAsync().ConfigureAwait(false);
         }
 
-        public async Task<IReadOnlyList<(DateTime CreatedAt, string TableName, string HoleCards, string BoardCards, int Net)>> 
+        public async Task<IReadOnlyList<(DateTime CreatedAt, string TableName, string HoleCards, string BoardCards, int Net)>>
             GetHandHistoryForUserAsync(string userName, int maxRows = 50)
         {
             userName = userName.Trim();

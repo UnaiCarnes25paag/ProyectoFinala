@@ -45,3 +45,4 @@ D:\DAM\Proyecto\Casino\obj\Debug\net8.0-windows7.0\refint\Casino.dll
 D:\DAM\Proyecto\Casino\obj\Debug\net8.0-windows7.0\Casino.pdb
 D:\DAM\Proyecto\Casino\obj\Debug\net8.0-windows7.0\Casino.genruntimeconfig.cache
 D:\DAM\Proyecto\Casino\obj\Debug\net8.0-windows7.0\ref\Casino.dll
+D:\DAM\Proyecto\Casino\obj\Debug\net8.0-windows7.0\Casino.sourcelink.json
