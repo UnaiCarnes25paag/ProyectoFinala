@@ -1,13 +1,15 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Net;
+using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using Casino.Data;
 using Casino.Models;
-using System.Linq;
 
 namespace Casino.ViewModels
 {
@@ -188,6 +190,7 @@ namespace Casino.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(StatsButtonText));
                 RaiseTableCommandsCanExecuteChanged();
+                (ExportStatsCommand as RelayCommand)?.RaiseCanExecuteChanged();
             }
         }
 
@@ -204,6 +207,7 @@ namespace Casino.ViewModels
         public ICommand SetMaxBetCommand { get; }
         public ICommand SendChatCommand { get; }
         public ICommand ShowHistoryCommand { get; }
+        public ICommand ExportStatsCommand { get; }   // NUEVO
 
         private int _localChips;
         public int LocalChips
@@ -277,8 +281,8 @@ namespace Casino.ViewModels
             SetMaxBetCommand = new RelayCommand(_ => BetAmount = MaxBet);
             SendChatCommand = new RelayCommand(_ => SendChat(), _ => !string.IsNullOrWhiteSpace(ChatInput));
 
-            // Botón de estadísticas (mismo comando para entrar/salir)
             ShowHistoryCommand = new RelayCommand(_ => ToggleStats(), _ => _serverClient is not null && _serverClient.IsConnected);
+            ExportStatsCommand = new RelayCommand(_ => ExportStats(), _ => IsShowingStats && HandHistory.Any());
 
             _readyPollTimer = new DispatcherTimer
             {
@@ -506,11 +510,13 @@ namespace Casino.ViewModels
         {
             (CreateTableCommand as RelayCommand)?.RaiseCanExecuteChanged();
             (JoinTableCommand as RelayCommand)?.RaiseCanExecuteChanged();
-            (LeaveTableCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (LeaveTableCommand as RelayCommand)?.
+RaiseCanExecuteChanged();
             (FoldCommand as RelayCommand)?.RaiseCanExecuteChanged();
             (CheckOrCallCommand as RelayCommand)?.RaiseCanExecuteChanged();
             (BetOrRaiseCommand as RelayCommand)?.RaiseCanExecuteChanged();
             (ToggleReadyCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (ExportStatsCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
 
         private async void ToggleReady()
@@ -946,6 +952,147 @@ namespace Casino.ViewModels
             {
                 MostPlayedHandsText = "Ez dago hasierako eskuen daturik.";
             }
+        }
+
+        private void ExportStats()
+        {
+            if (!IsShowingStats || HandHistory.Count == 0)
+            {
+                StatusMessage = "Ez dago esportatzeko daturik.";
+                return;
+            }
+
+            var dlg = new SaveFileDialog
+            {
+                Filter = "PDF (*.pdf)|*.pdf",
+                FileName = "estatistikak.pdf",
+                OverwritePrompt = true
+            };
+
+            if (dlg.ShowDialog() != true)
+                return;
+
+            try
+            {
+                var lines = BuildStatsLines();
+                var pdfBytes = BuildSimplePdf(lines);
+                File.WriteAllBytes(dlg.FileName, pdfBytes);
+                StatusMessage = "PDFa ongi sortu da.";
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = $"Errorea PDF sortzean: {ex.Message}";
+            }
+        }
+
+        private string[] BuildStatsLines()
+        {
+            var list = new List<string>
+            {
+                "Poker Estatistikak",
+                $"Erabiltzailea: {LocalPlayerName}",
+                $"Mahai kopurua (historialean): {HandHistory.Select(h => h.TableName).Distinct(StringComparer.OrdinalIgnoreCase).Count()}",
+                $"Eskuak guztira: {HandHistory.Count}",
+                StatsSummary,
+                WinRateText,
+                MostPlayedRanksText,
+                MostPlayedHandsText
+            };
+
+            if (HandHistory.Count > 0)
+            {
+                list.Add("");
+                list.Add("Azken eskuek:");
+                foreach (var h in HandHistory.Take(15))
+                {
+                    var line = $"{h.CreatedAt:dd/MM HH:mm} | Mahai: {h.TableName} | Net: {h.Net} | Eskua: {h.HoleCards} | Boarda: {h.BoardCards}";
+                    list.Add(line);
+                }
+            }
+
+            return list.ToArray();
+        }
+
+        // Generador PDF mínimo (1 página, texto simple)
+        private static byte[] BuildSimplePdf(string[] lines)
+        {
+            // Prepara contenido de texto
+            var contentSb = new StringBuilder();
+            contentSb.AppendLine("BT");
+            contentSb.AppendLine("/F1 12 Tf");
+            contentSb.AppendLine("50 780 Td");
+            contentSb.AppendLine("14 TL"); // leading
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var txt = EscapePdfText(lines[i]);
+                contentSb.Append('(').Append(txt).AppendLine(") Tj");
+                if (i < lines.Length - 1)
+                    contentSb.AppendLine("T*");
+            }
+
+            contentSb.AppendLine("ET");
+            var contentBytes = Encoding.ASCII.GetBytes(contentSb.ToString());
+            var contentLength = contentBytes.Length;
+
+            var sb = new StringBuilder();
+            sb.AppendLine("%PDF-1.4");
+
+            long pos1 = sb.Length;
+            sb.AppendLine("1 0 obj");
+            sb.AppendLine("<< /Type /Catalog /Pages 2 0 R >>");
+            sb.AppendLine("endobj");
+
+            long pos2 = sb.Length;
+            sb.AppendLine("2 0 obj");
+            sb.AppendLine("<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+            sb.AppendLine("endobj");
+
+            long pos3 = sb.Length;
+            sb.AppendLine("3 0 obj");
+            sb.AppendLine("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>");
+            sb.AppendLine("endobj");
+
+            long pos4 = sb.Length;
+            sb.AppendLine("4 0 obj");
+            sb.AppendLine("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
+            sb.AppendLine("endobj");
+
+            long pos5 = sb.Length;
+            sb.AppendLine("5 0 obj");
+            sb.AppendLine($"<< /Length {contentLength} >>");
+            sb.AppendLine("stream");
+            sb.Append(contentSb.ToString());
+            sb.AppendLine("endstream");
+            sb.AppendLine("endobj");
+
+            // xref
+            var xrefPos = sb.Length;
+            sb.AppendLine("xref");
+            sb.AppendLine("0 6");
+            sb.AppendLine("0000000000 65535 f ");
+            sb.AppendLine($"{pos1:0000000000} 00000 n ");
+            sb.AppendLine($"{pos2:0000000000} 00000 n ");
+            sb.AppendLine($"{pos3:0000000000} 00000 n ");
+            sb.AppendLine($"{pos4:0000000000} 00000 n ");
+            sb.AppendLine($"{pos5:0000000000} 00000 n ");
+            sb.AppendLine("trailer");
+            sb.AppendLine("<< /Size 6 /Root 1 0 R >>");
+            sb.AppendLine("startxref");
+            sb.AppendLine(xrefPos.ToString());
+            sb.AppendLine("%%EOF");
+
+            return Encoding.ASCII.GetBytes(sb.ToString());
+        }
+
+        private static string EscapePdfText(string text)
+        {
+            return text
+                .Replace("\\", "\\\\")
+                .Replace("(", "\\(")
+                .Replace(")", "\\)")
+                .Replace("\r", "")
+                .Replace("\n", " ");
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

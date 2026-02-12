@@ -458,6 +458,12 @@
                                Margin="0,0,0,12"
                                TextAlignment="Center"/>
 
+                    <Button Content="PDFra inprimatu"
+                            Command="{Binding ExportStatsCommand}"
+                            Margin="0,0,0,12"
+                            Width="180"
+                            HorizontalAlignment="Center"/>
+
                     <!-- Si luego añades más métricas, añádelas aquí -->
                     <ItemsControl ItemsSource="{Binding HandHistory}">
                         <ItemsControl.ItemTemplate>
