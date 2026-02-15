@@ -57,7 +57,7 @@ namespace Casino.Views
         private void ToggleModeButton_OnClick(object sender, RoutedEventArgs e)
         {
             _viewModel.ToggleModeCommand.Execute(null);
-            ToggleModeButton.Content = _viewModel.IsRegisterMode ? "Ya tengo cuenta" : "Crear cuenta";
+            ToggleModeButton.Content = _viewModel.IsRegisterMode ? "Kontu bat badaukat" : "Kontua sortu";
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)

@@ -1,37 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\",
+  "WorkspaceRootPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\views\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:views\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\viewmodels\\pokerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\viewmodels\\pokerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:viewmodels\\pokerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\data\\tablerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\data\\tablerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:data\\tablerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\views\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\views\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:views\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\data\\tableserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\data\\tableserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:data\\tableserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CABFE3A1-871A-413E-AFD4-65BD0382E146}|..\\Casino.Server\\Casino.Server.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino.server\\serverclienthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto2\\proyectofinala\\casino\\data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|c:\\users\\unai\\desktop\\trabajos unai\\proyecto\\proyectofinala\\casino\\data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A313EC45-C4F3-4E57-8B2E-909691F4469B}|Casino.csproj|solutionrelative:data\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino.Server\\ServerClientHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,10 +54,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "Views\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAqwDsAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:57:10.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-12T15:57:28.659Z",
@@ -61,22 +78,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LoginWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml",
               "RelativeDocumentMoniker": "Views\\LoginWindow.xaml",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Views\\LoginWindow.xaml",
               "RelativeToolTip": "Views\\LoginWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-12T15:57:28.678Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\ViewModels\\LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\ViewModels\\LoginViewModel.cs",
               "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAJ4AAAAAAAAAAAAawAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -86,22 +103,22 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "PokerViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\ViewModels\\PokerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\ViewModels\\PokerViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\PokerViewModel.cs",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\ViewModels\\PokerViewModel.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\ViewModels\\PokerViewModel.cs",
               "RelativeToolTip": "ViewModels\\PokerViewModel.cs",
-              "ViewState": "AgIAAPYBAAAAAAAAAAAuwJwDAAArAAAAAAAAAA==",
+              "ViewState": "AgIAANUAAAAAAAAAAAAewOcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-12T15:57:28.682Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TableRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\TableRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\TableRepository.cs",
               "RelativeDocumentMoniker": "Data\\TableRepository.cs",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\TableRepository.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\TableRepository.cs",
               "RelativeToolTip": "Data\\TableRepository.cs",
               "ViewState": "AgIAADwAAAAAAAAAAADgv0cAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -109,11 +126,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TableServer.cs",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\TableServer.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\TableServer.cs",
               "RelativeDocumentMoniker": "Data\\TableServer.cs",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\TableServer.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\TableServer.cs",
               "RelativeToolTip": "Data\\TableServer.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAuwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -121,12 +138,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ServerClientHandler.cs",
               "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino.Server\\ServerClientHandler.cs",
-              "RelativeDocumentMoniker": "..\\Casino.Server\\ServerClientHandler.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Proyecto\\ProyectoFinala\\Casino.Server\\ServerClientHandler.cs",
               "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino.Server\\ServerClientHandler.cs",
-              "RelativeToolTip": "..\\Casino.Server\\ServerClientHandler.cs",
+              "RelativeToolTip": "..\\..\\..\\Proyecto\\ProyectoFinala\\Casino.Server\\ServerClientHandler.cs",
               "ViewState": "AgIAAAwBAAAAAAAAAAAswDIBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-12T15:57:28.689Z"
@@ -135,9 +152,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\AuthService.cs",
               "RelativeDocumentMoniker": "Data\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Data\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Data\\AuthService.cs",
               "RelativeToolTip": "Data\\AuthService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
