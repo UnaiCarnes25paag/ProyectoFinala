@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Casino.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7566d39f803c65994e82955b13bc6b7f2b63f121")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0acb0382fa3aa4d4d0c54d0d5f1dc769adf80c1c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Casino.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Casino.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JU+vY7rmyUE=",
+  "dgSpecHash": "Zft1tH60qDY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino.Server\\Casino.Server.csproj",
+  "projectFilePath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino.Server\\Casino.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Unai\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",
     "C:\\Users\\Unai\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",

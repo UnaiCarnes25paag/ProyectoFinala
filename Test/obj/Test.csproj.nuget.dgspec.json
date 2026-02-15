@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Test\\Test.csproj": {}
+    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj": {
+    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj",
+        "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj",
         "projectName": "Casino",
-        "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj",
+        "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj",
         "packagesPath": "C:\\Users\\Unai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\obj\\",
+        "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Unai\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -74,14 +74,14 @@
         }
       }
     },
-    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Test\\Test.csproj": {
+    "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Test\\Test.csproj",
+        "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Test\\Test.csproj",
         "packagesPath": "C:\\Users\\Unai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Test\\obj\\",
+        "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Unai\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -98,8 +98,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows7.0",
             "projectReferences": {
-              "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj": {
-                "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj"
+              "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj": {
+                "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj"
               }
             }
           }

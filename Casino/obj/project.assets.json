@@ -329,11 +329,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj",
+      "projectUniqueName": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj",
       "projectName": "Casino",
-      "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\Casino.csproj",
+      "projectPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\Casino.csproj",
       "packagesPath": "C:\\Users\\Unai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto\\ProyectoFinala\\Casino\\obj\\",
+      "outputPath": "C:\\Users\\Unai\\Desktop\\Trabajos Unai\\Proyecto2\\ProyectoFinala\\Casino\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Unai\\AppData\\Roaming\\NuGet\\NuGet.Config",
